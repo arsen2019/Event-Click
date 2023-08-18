@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+  </head>
+  <body>
+    <div class="center">
+      <h1>Login</h1>
+      <form method="post">
+        <div class="txt_field">
+          <input type="text" name="email" required>
+          <span></span>
+          <label>Username</label>
+        </div>
+        <div class="txt_field">
+          <input type="password" name="password" required>
+          <span></span>
+          <label>Password</label>
+        </div>
+          <div class="pass">Forgot Password?</div>
+          <input type="submit" value="Login">
+          <div class="signup_link">Not a member? <a href="sign_up">Signup</a>
+        </div>
+      </form>
+    </div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages  %}
+        {% for category, message in messages %}
+            {% if category == 'error' %}
+            <div class="error" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dissmis="alert" >
+                    <span aria-hidden="true" ></span>
+                </button>
+            </div>
+            {% else %}
+            <div class="success" role="alert">
+                {{ message }}
+            </div>
+        {% endif %}
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+  </body>
+</html>

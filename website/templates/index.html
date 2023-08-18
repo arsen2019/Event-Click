@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+        <title>Event Click</title>
+    </head>
+    <body>
+        <header class="header">
+            <div class="container">
+                <div class="header_inner">
+                    <div class="header_logo">
+                        Event Click
+                    </div>
+                    <nav>
+                        <a class="nav_link" href="#">Blog</a>
+                        <a class="nav_link" href="#">Shop</a>
+                        <a class="nav_link" href="#">About</a>
+                        <a class="nav_link" href="#">Contact</a>
+                        {% if user.is_authenticated %}
+                        <a class="nav_link logged_user">{{ user.name }}</a>
+                        <a class = "nav_link"  href="/logout">Logout</a>
+                        {% else %}
+                        <a href="/login" class="nav_link login">Login</a>
+                        {% endif %}
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div class="intro">
+            <div class="intro_main">
+                <div class="intro_container">
+                    <h1>Intro</h1>
+                    <p>Event click is a platform where you can find ongoing and planned events or get yourself a desired bottle of wine. </p>
+                    <button class="get_started_button">Get Started</button>
+                </div>
+            </div>
+        </div>
+        <section class="section">
+            <div class="container">
+                <div class="section_header">
+                    <h3 class="section_title">Services We Provide</h3>
+                    <div class="section_text">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque est expedita
+                            harum iste nemo totam ullam. Adipisci aperiam, consequatur ipsa, minus molestiae
+                            nisi numquam obcaecati quisquam reiciendis reprehenderit sequi ullam?
+                        </p>
+                    </div>
+                </div>
+                <div class="about">
+                    <div class="about_item">
+                        <div class="about_img">
+                            <img src="../static/images/shop.jpg" class="about_image">
+                        </div>
+                        <div class="about_text">shop</div>
+                    </div>
+                    <div class="about_item">
+                        <div class="about_img">
+                            <img src="../static/images/winyard.jpg" class="about_image">
+                        </div>
+                        <div class="about_text">winyards</div>
+                    </div>
+                    <div class="about_item">
+                        <div class="about_img">
+                            <img src="../static/images/events.jpg" class="about_image">
+                        </div>
+                        <div class="about_text">events</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container">
+                <div class="section_header">
+                        <h3 class="section_title">Sign up for more information</h3>
+                    </div>
+                <div class="signup_section">
+                    <div class="sign_item">
+                        <img class="sign_icon" src="/../static/images/google_icon.png">
+                        <div class="sign_title">Google</div>
+                    </div>
+                    <div class="sign_item">
+                        <img class="sign_icon" src="../static/images/facebook_icon.png">
+                        <div class="sign_title">Facebook</div>
+                    </div>
+                    <div class="sign_item">
+                        <a href="sign_up.html">
+                            <img class="sign_icon" src="../static/images/mail_icon.png">
+                        </a>
+                        <div class="sign_title">Mail</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="container">
+
+            </div>
+        </footer>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages  %}
+                {% for category, message in messages %}
+                    {% if category == 'success' %}
+                    <div class="success" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dissmis="alert" >
+                            <span aria-hidden="true" ></span>
+                        </button>
+                    </div>
+                {% endif %}
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+    </body>
+</html>
